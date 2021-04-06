@@ -1,4 +1,4 @@
-package impl
+package bIter
 
 import (
 	"github.com/dgraph-io/badger/v3"
