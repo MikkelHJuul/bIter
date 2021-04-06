@@ -1,0 +1,2 @@
+# bIter
+Iterator for badgerDB
