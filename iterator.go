@@ -7,15 +7,14 @@ import (
 
 // Iterator adds an implementable target for variations of different Iterator's
 // for simplification of functional code, that you can then implement this reduced
-// interface such that primarily methods Rewind and Valid and be overloaded.
+// interface such that primarily methods Rewind and Valid and Next are overloaded.
 // usage:
 // 		for iterator.Rewind(); iterator.Valid(); iterator.Next() {
 //			iterator.Item()
 //			...
 //		}
-// is a general snippet of code that using this interface may have overloaded
-// ... Rewind to seek to a prefix or a value
-// ... Valid to validate the key is still within bounds using fx bytes.Compare
+// this is a general snippet of code that using this interface may have overloaded
+// only Rewind and Valid are changes
 type Iterator interface {
 	Rewind()
 	Valid() bool
