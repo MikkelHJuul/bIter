@@ -1,7 +1,7 @@
 # bIter
 Iterator for badgerDB
 
-```
+```go
 // Iterator adds an implementable target for variations of different Iterator's
 // for simplification of functional code, that you can then implement this reduced
 // interface such that primarily methods Rewind and Valid and be overloaded.
