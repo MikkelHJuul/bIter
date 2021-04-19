@@ -1,4 +1,9 @@
 # bIter
+
+[![Go Report Card](https://goreportcard.com/badge/github.com/MikkelHJuul/bIter)](https://goreportcard.com/report/github.com/MikkelHJuul/bIter)
+[![PkgGoDev](https://pkg.go.dev/badge/github.com/MikkelHJuul/bIter)](https://pkg.go.dev/github.com/MikkelHJuul/bIter)
+![GitHub License](https://img.shields.io/github/license/MikkelHJuul/bIter)
+
 Iterator for badgerDB
 
 ```go
