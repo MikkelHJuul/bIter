@@ -1,4 +1,4 @@
-package bIter
+package biter
 
 import (
 	"bytes"
@@ -105,18 +105,7 @@ func KeyRangeIterator(it *badger.Iterator, prefix, from, to []byte) Iterator {
 		return &badgerPrefixFromIterator{&badgerPrefixIterator{it, prefix}, from}
 
 	default: // all is set
-		f, t := from, to
-		if bytes.Compare(prefix, from) >= 0 {
-			f = prefix
-		}
-		lastInPrefix := lastInPrefix(prefix, to)
-		if keyLtEq(lastInPrefix, to) {
-			if bytes.Equal(f, prefix) {
-				return &badgerPrefixIterator{it, prefix}
-			}
-			return &badgerPrefixFromIterator{&badgerPrefixIterator{it, prefix}, f}
-		}
-		return &badgerFromToIterator{&badgerPrefixIterator{it, f}, t}
+		return iteratorOfAll(it, prefix, from, to)
 	}
 }
 
@@ -130,4 +119,19 @@ func lastInPrefix(prefix, to []byte) []byte {
 		lastValueInPrefix = append(lastValueInPrefix, padding...)
 	}
 	return lastValueInPrefix
+}
+
+func iteratorOfAll(it *badger.Iterator, prefix, from, to []byte) Iterator {
+	f, t := from, to
+	if bytes.Compare(prefix, from) >= 0 {
+		f = prefix
+	}
+	lastInPrefix := lastInPrefix(prefix, to)
+	if keyLtEq(lastInPrefix, to) {
+		if bytes.Equal(f, prefix) {
+			return &badgerPrefixIterator{it, prefix}
+		}
+		return &badgerPrefixFromIterator{&badgerPrefixIterator{it, prefix}, f}
+	}
+	return &badgerFromToIterator{&badgerPrefixIterator{it, f}, t}
 }
