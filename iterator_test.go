@@ -1,4 +1,4 @@
-package bIter
+package biter
 
 import (
 	"github.com/dgraph-io/badger/v3"
