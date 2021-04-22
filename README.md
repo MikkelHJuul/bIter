@@ -2,6 +2,8 @@
 
 [![Go Report Card](https://goreportcard.com/badge/github.com/MikkelHJuul/bIter)](https://goreportcard.com/report/github.com/MikkelHJuul/bIter)
 [![PkgGoDev](https://pkg.go.dev/badge/github.com/MikkelHJuul/bIter)](https://pkg.go.dev/github.com/MikkelHJuul/bIter)
+[![Maintainability](https://api.codeclimate.com/v1/badges/96eda04e3207e18786c2/maintainability)](https://codeclimate.com/github/MikkelHJuul/bIter/maintainability)
+[![codecov](https://codecov.io/gh/MikkelHJuul/bIter/branch/main/graph/badge.svg?token=1RFY7XASKC)](https://codecov.io/gh/MikkelHJuul/bIter)
 ![GitHub License](https://img.shields.io/github/license/MikkelHJuul/bIter)
 
 Iterator for badgerDB
