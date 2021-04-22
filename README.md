@@ -31,3 +31,5 @@ This library also add 5 concrete iterators: prefix, from-to, from, to, prefix-fr
 The library does not support backward key-scan (whence only a prefix-from)
 
 Use the method `biter.KeyRangeIterator` and throw any combination of prefix, from and to at it to get the corresponding `Iterator`.
+
+for some examples of functionality refer to [queries_test.go](queries_test.go)
