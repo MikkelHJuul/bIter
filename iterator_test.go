@@ -33,23 +33,23 @@ func TestKeyRangeIterator(t *testing.T) {
 			args: args{prefix: []byte("prefix")},
 		}, {
 			name: "from-to returns a from-to iterator",
-			want: &badgerFromToIterator{&badgerPrefixIterator{anIterator, []byte("from")}, []byte("to")},
+			want: &badgerFromToIterator{anIterator, []byte("from"), []byte("to")},
 			args: args{from: []byte("from"), to: []byte("to")},
 		}, {
 			name: "from returns a from iterator",
-			want: &badgerFromIterator{&badgerPrefixIterator{anIterator, []byte("from")}},
+			want: &badgerFromIterator{anIterator, []byte("from")},
 			args: args{from: []byte("from")},
 		}, {
 			name: "to returns a to iterator",
-			want: &badgerToIterator{&badgerFromToIterator{&badgerPrefixIterator{anIterator, nil}, []byte("to")}},
+			want: &badgerToIterator{anIterator, []byte("to")},
 			args: args{to: []byte("to")},
 		}, {
 			name: "to-prefix returns a FromTo iterator",
-			want: &badgerFromToIterator{&badgerPrefixIterator{anIterator, []byte("d")}, []byte("dg")},
+			want: &badgerFromToIterator{anIterator, []byte("d"), []byte("dg")},
 			args: args{to: []byte("dg"), prefix: []byte("d")},
 		}, {
 			name: "to-prefix returns a FromTo iterator, which is invalid",
-			want: &badgerFromToIterator{&badgerPrefixIterator{anIterator, []byte("d")}, []byte("c")},
+			want: &badgerFromToIterator{anIterator, []byte("d"), []byte("c")},
 			args: args{to: []byte("c"), prefix: []byte("d")},
 		}, {
 			name: "to-prefix returns a Prefix iterator",
@@ -69,11 +69,11 @@ func TestKeyRangeIterator(t *testing.T) {
 			args: args{from: []byte("k"), prefix: []byte("i")},
 		}, {
 			name: "from-to-prefix returns a FromTo Iterator",
-			want: &badgerFromToIterator{&badgerPrefixIterator{anIterator, []byte("ka")}, []byte("kb")},
+			want: &badgerFromToIterator{anIterator, []byte("ka"), []byte("kb")},
 			args: args{from: []byte("ka"), to: []byte("kb"), prefix: []byte("k")},
 		}, {
 			name: "from-to-prefix returns a FromTo Iterator a out of bounds",
-			want: &badgerFromToIterator{&badgerPrefixIterator{anIterator, []byte("k")}, []byte("kb")},
+			want: &badgerFromToIterator{anIterator, []byte("k"), []byte("kb")},
 			args: args{from: []byte("a"), to: []byte("kb"), prefix: []byte("k")},
 		}, {
 			name: "from-to-prefix returns a Prefix Iterator",
